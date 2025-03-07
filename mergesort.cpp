@@ -1,3 +1,4 @@
+//Time complexity O(nlog(n))
 #include<bits/stdc++.h>
 using namespace std;
 void merge(vector<int>&a,int start,int mid,int end)
