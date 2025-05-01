@@ -6,7 +6,7 @@ void BFS(int source, vector<vector<int>>& adj)
     //Initialization
     vector<string>color(n,"write");
     vector<int>d(n,INT_MAX);
-    vector<int>pred(n,-1);
+    vector<int>pred(n,-1); //predecessor
     //Initialize souece
     color[source] = "gray";
     d[source] = 0;
@@ -88,4 +88,51 @@ Input:
 4 5
 3 4
 0
+*/
+/*
+#include <bits/stdc++.h>
+using namespace std;
+
+void BFS(int start_node, vector<vector<int>>& adj, vector<bool>& visited) {
+    queue<int> q;
+    visited[start_node] = true;
+    q.push(start_node);
+
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        cout << node << " ";
+
+        for (int a : adj[node]) {
+            if (!visited[a]) {
+                visited[a] = true;
+                q.push(a);
+            }
+        }
+    }
+}
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<vector<int>> adj(n + 1); // 1-based indexing
+
+    for (int i = 0; i < m; ++i) {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u); // remove if directed
+    }
+
+    vector<bool> visited(n + 1, false);
+    int start;
+    cin >> start;
+
+    cout << "BFS traversal starting from node " << start << ": ";
+    BFS(start, adj, visited);
+    cout << endl;
+
+    return 0;
+}
 */
