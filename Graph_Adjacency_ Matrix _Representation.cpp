@@ -13,6 +13,14 @@ void deleteEdges(vector<vector<int>>&adj,int i,int j)
     adj[i][j]=0;
     adj[j][i]=0;
 }
+void searchEdge(const vector<vector<int>>& adj, int u, int v) {
+    if (adj[u][v] != 0) {
+        cout << "Edge exists between " << u << " and " << v
+             << " with weight: " << adj[u][v] << endl;
+    } else {
+        cout << "No edge exists between " << u << " and " << v << endl;
+    }
+}
 void print(vector<vector<int>>&adj)
 {
     int n=adj.size();
@@ -36,7 +44,7 @@ int main() {
 
     while (true) {
         int n;
-        cout << "\nMenu:\n1. Add edges\n2. Print matrix\n3. Delete edge\n4. Exit\nChoice: ";
+        cout << "\nMenu:\n1. Add edges\n2. Print matrix\n3. Delete edge\n4. searchEdge\n5. Exit\nChoice: ";
         cin >> n;
 
         if (n == 1) {
@@ -63,7 +71,10 @@ int main() {
             cin >> del_u >> del_v;
             deleteEdges(adj, del_u, del_v);
         } else if (n == 4) {
-            break;
+          int u, v;
+            cout << "Enter vertices to search edge (vertex1 vertex2): ";
+            cin >> u >> v;
+            searchEdge(adj, u, v);
         } else {
             cout << "Invalid choice. Try again." << endl;
         }
