@@ -136,3 +136,49 @@ int main() {
     return 0;
 }
 */
+/*
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+void bfs(int start, vector<vector<pair<int, int>>>& graph, vector<bool>& visited) {
+    queue<int> q;
+    visited[start] = true;
+    q.push(start);
+
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        cout << node << " ";
+
+        for (auto [neighbor, weight] : graph[node]) {
+            if (!visited[neighbor]) {
+                visited[neighbor] = true;
+                q.push(neighbor);
+            }
+        }
+    }
+}
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<vector<pair<int, int>>> graph(n);
+    vector<bool> visited(n, false);
+
+    for (int i = 0; i < m; ++i) {
+        int u, v, w;
+        cin >> u >> v >> w;
+        graph[u].push_back({v, w});
+        graph[v].push_back({u, w}); // If undirected
+    }
+
+    int start;
+    cin >> start;
+    bfs(start, graph, visited);
+
+    return 0;
+}
+*/
