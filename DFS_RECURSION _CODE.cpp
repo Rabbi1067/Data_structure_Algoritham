@@ -1,3 +1,4 @@
+/*
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -69,3 +70,68 @@ int main()
 
     return 0;
 }
+*/
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Global timer
+int timer = 0;
+
+// DFS function
+void dfs(int node, vector<vector<pair<int, int>>>& graph, vector<bool>& visited,
+         vector<int>& discovery, vector<int>& finish) {
+    visited[node] = true;
+    timer++;
+    discovery[node] = timer;
+
+    for (auto [neighbor, weight] : graph[node]) {
+        if (!visited[neighbor]) {
+            dfs(neighbor, graph, visited, discovery, finish);
+        }
+    }
+
+    timer++;
+    finish[node] = timer;
+}
+
+int main() {
+    int num_vertices, num_edges;
+    cin >> num_vertices >> num_edges;
+
+    vector<vector<pair<int, int>>> graph(num_vertices);
+    vector<bool> visited(num_vertices, false);
+    vector<int> discovery(num_vertices), finish(num_vertices);
+
+    for (int i = 0; i < num_edges; ++i) {
+        int u, v, w;
+        cin >> u >> v >> w;
+        graph[u].emplace_back(v, w);
+        graph[v].emplace_back(u, w); // Remove for directed graph
+    }
+
+    int start;
+    cin >> start;
+
+    dfs(start, graph, visited, discovery, finish);
+
+    // Output in requested format
+    cout << "\nDFS Results:\n";
+    cout << "Vertex\tDiscovery\tFinish\n";
+    for (int i = 0; i < num_vertices; ++i) {
+        cout << i << "\t" << discovery[i] << "\t\t" << finish[i] << "\n";
+    }
+
+    return 0;
+}
+/*
+5 7
+0 1 10
+0 2 5
+1 2 2
+1 3 1
+2 1 3
+2 3 9
+2 4 2
+0*/
