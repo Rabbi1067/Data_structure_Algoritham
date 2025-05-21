@@ -32,3 +32,14 @@ int main() {
     cout << "Maximum value in knapsack = " << knapsackRec(W, val, wt, n) << endl;
     return 0;
 }
+/*
+int knapsackOptimized(int W, vector<int>& wt, vector<int>& val, int n) {
+    vector<int> dp(W + 1, 0);
+    for (int i = 0; i < n; ++i) {
+        for (int w = W; w >= wt[i]; --w) {
+            dp[w] = max(dp[w], val[i] + dp[w - wt[i]]);
+        }
+    }
+    return dp[W];
+}
+*/
