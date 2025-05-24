@@ -43,3 +43,14 @@ int knapsackOptimized(int W, vector<int>& wt, vector<int>& val, int n) {
     return dp[W];
 }
 */
+
+/*
+Enter number of items: 
+4
+Enter values/Profits of items:
+60 100 120 50
+Enter weights of items:
+10 20 30 5
+Enter capacity of knapsack:
+50
+*/
