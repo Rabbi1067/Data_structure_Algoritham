@@ -1,3 +1,13 @@
+/*
+✅ Conditions for Binary Search on Strings
+The array (or vector) of strings must be sorted lexicographically.
+
+The search target must also be a string.
+
+You can use the same binary search logic as with numbers—just compare strings using <, ==, >.
+*/
+
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
